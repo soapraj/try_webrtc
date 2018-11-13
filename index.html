@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting started with WebRTC</title>
+  </head>
+  <body>
+    <video id="webcam"></video>
+    <script type="text/javascript">
+      if (navigator.getUserMedia) {
+        navigator.getUserMedia({
+          video: true,
+          audio: true
+        }, onSuccess, onError);
+      } else {
+        alert('getUserMedia is not supported in this browser.');
+      }
+
+      /* Works in firefox only for now */
+      function onSuccess(stream) {
+        var video = document.getElementById('webcam');
+        video.autoplay = true;
+        video.srcObject = stream;
+      }
+
+      function onError() {
+        console.log('There has been a problem retreiving the streams - are you running on file:/// or did you disallow access?');
+      }
+    </script>
+  </body>
+</html>
