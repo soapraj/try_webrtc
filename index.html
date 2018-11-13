@@ -7,6 +7,7 @@
   <body>
     <video id="webcam"></video>
     <script type="text/javascript">
+      navigator.getUserMedia = navigator.mozGetUserMedia;
       if (navigator.getUserMedia) {
         navigator.getUserMedia({
           video: true,
